@@ -44,7 +44,7 @@ module.exports = {
     // https://github.com/zapier/zapier-platform/tree/master/packages/cli#customdynamic-fields
     // Alternatively, a static field definition can be provided, to specify labels for the fields
     outputFields: [
-      {key: "createdAt", label: 'Created At', helpText: 'Data of customer creation'},
+      {key: "createdAt", label: 'Created at', helpText: 'Data of customer creation'},
       {key: 'firstname', label: 'First Name'},
       {key: 'lastname', label: 'Last Name'},
       {key: 'company', label: 'Company'},
