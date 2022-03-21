@@ -31,7 +31,7 @@ describe('triggers.new_customer', () => {
     }
 
     const result = await appTester(
-      App.triggers['new_customer'].operation.perform,
+      App.triggers.new_customer.operation.perform,
       bundle
     );
     
