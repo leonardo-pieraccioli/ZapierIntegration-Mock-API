@@ -1,12 +1,13 @@
 {
   "name": "mock-api-integration",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "jest --testTimeout 10000"
   },
   "dependencies": {
+    "zapier-platform-cli": "^11.3.3",
     "zapier-platform-core": "11.3.2"
   },
   "devDependencies": {

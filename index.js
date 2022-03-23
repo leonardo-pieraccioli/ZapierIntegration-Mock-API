@@ -10,6 +10,8 @@ const getGetAllUserIds = require("./triggers/get_all_user_ids");
 
 const createAddNewCustomer = require("./creates/add_new_customer");
 
+const orderResource = require("./resources/order");
+
 module.exports = {
   // This is just shorthand to reference the installed dependencies you have.
   // Zapier will need to know these before we can upload.
@@ -36,5 +38,7 @@ module.exports = {
     [createAddNewCustomer.key]: createAddNewCustomer
   },
 
-  resources: {},
+  resources: {
+    [orderResource.key]: orderResource
+  },
 };
