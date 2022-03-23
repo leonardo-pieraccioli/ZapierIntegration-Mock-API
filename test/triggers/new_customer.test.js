@@ -7,7 +7,7 @@ const App = require('../../index');
 const appTester = zapier.createAppTester(App);
 // read the `.env` file into the environment, if available
 zapier.tools.env.inject();
-
+ 
 describe('triggers.new_customer', () => {
   it('should run', async () => {
     const bundle = { inputData: {
@@ -15,7 +15,11 @@ describe('triggers.new_customer', () => {
     } };
 
     const results = await appTester(App.triggers.new_customer.operation.perform, bundle);
+
+    console.log(results.request);
     expect(results).toBeDefined();
+    expect(results.data).toBeDefined();
+    expect(results.status).toBe(200);
     // TODO: add more assertions
   });
 
