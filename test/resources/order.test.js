@@ -10,10 +10,16 @@ zapier.tools.env.inject();
 
 describe('resources.order', () => {
   it('should run', async () => {
-    const bundle = { inputData: {} };
+    const bundle = { inputData: {
+      user_id: 1,
+      customer_id: 1
+    } };
 
     const results = await appTester(App.resources.order.list.operation.perform, bundle);
-    expect(results).toBeDefined();
+    
+    console.log(results);
+    expect(results.length).toBeGreaterThan(0);
+
     // TODO: add more assertions
   });
 });

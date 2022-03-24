@@ -1,7 +1,7 @@
 {
   "name": "mock-api-integration",
   "version": "1.0.2",
-  "description": "",
+  "description": "A sample integration to test Zapier functionality",
   "main": "index.js",
   "scripts": {
     "test": "jest --testTimeout 10000"

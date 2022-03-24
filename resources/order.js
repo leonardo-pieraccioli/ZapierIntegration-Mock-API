@@ -1,19 +1,20 @@
 // get a list of orders
 const performList = async (z, bundle) => {
   const response = await z.request({
-    url: 'https://62321009c5ec1188ad2956df.mockapi.io/zapier//user/:id/customer/'+bundle.inputData.customer_id+'/orders',
+    url: 'https://62321009c5ec1188ad2956df.mockapi.io/zapier/user/'+bundle.inputData.user_id+'/customer/'+bundle.inputData.customer_id+'/orders',
     params: {
-      sort_by: 'createdAt',
+      sortby: 'createdAt',
       order: 'desc'
     }
   });
+  console.log('API url: '+ response.request.url);
   return response.data
 };
 
 // find a particular order by name (or other search criteria)
 const performSearch = async (z, bundle) => {
   const response = await z.request({
-    url: 'https://62321009c5ec1188ad2956df.mockapi.io/zapier//user/:id/customer/'+bundle.inputData.customer_id+'/orders/'+bundle.inputData.order_id,
+    url: 'https://62321009c5ec1188ad2956df.mockapi.io/zapier/user/'+bundle.inputData.user_id+'/customer/'+bundle.inputData.customer_id+'/orders/'+bundle.inputData.order_id,
   });
   return response.data
 };
@@ -22,7 +23,7 @@ const performSearch = async (z, bundle) => {
 const performCreate = async (z, bundle) => {
   const response = await z.request({
     method: 'POST',
-    url: 'https://62321009c5ec1188ad2956df.mockapi.io/zapier//user/:id/customer/'+bundle.inpuData.customer_id+'/orders',
+    url: 'https://62321009c5ec1188ad2956df.mockapi.io/zapier/user/'+bundle.inputData.user_id+'/customer/'+bundle.inpuData.customer_id+'/orders',
     body: {
       name: bundle.inputData.name, // json by default
       cost: bundle.inputData.cost
@@ -62,7 +63,8 @@ module.exports = {
       // `inputFields` defines the fields a user could provide
       // Zapier will pass them in as `bundle.inputData` later. They're optional on triggers, but required on searches and creates.
       inputFields: [
-        {key: 'customer_id', label: 'Customer ID', required: true}
+        {key: 'user_id', label: 'User ID', required: true},
+        {key: 'customer_id', label: 'Customer ID', required: true},
       ]
     }
   },
@@ -74,6 +76,7 @@ module.exports = {
     },
     operation: {
       inputFields: [
+        {key: 'user_id', label: 'User ID', required: true},
         {key: 'customer_id', label: 'Customer ID', required: true},
         {key: 'id', label: 'Order ID', required: true}
       ],
@@ -88,9 +91,10 @@ module.exports = {
     },
     operation: {
       inputFields: [
+        {key: 'UserId', label: 'Name', required: true},
+        {key: 'customerId', label: 'Customer ID', required: true},
         {key: 'name', label: 'Name', required: true},
         {key: 'cost', label: 'Cost', required: true},
-        {key: 'customerId', label: 'Customer ID', required: true},
       ],
       perform: performCreate
     },
